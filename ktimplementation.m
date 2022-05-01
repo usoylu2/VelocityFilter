@@ -7,15 +7,15 @@ Dx = lambda /10;
 Dz = lambda /10;
 frame_rate = 150;% Hz
 deltat = 1 / frame_rate;
-Nx =327;
-Nz =650;
+Nx =327; %numbeofpixels
+Nz =650; %numbeofpixels
 
 t = -1:deltat :1 ;
 kz = 2*pi*linspace(-1/(2*Dz),1/(2*Dz),Nz);
 kx = 2*pi*linspace(-1/(2*Dx),1/(2*Dx),Nx);
 [LineKx,LineKz,T] = meshgrid(kx,kz,t);
-v0 = [0e-3,5e-3]; %x and z
-sigma_w = 0.5;
+v0 = [0e-3,5e-3]; %x component and z component of velocity in meters per seconds
+sigma_w = 0.5; 
 
 filter = exp(-1i* (LineKx *v0(1) +LineKz*v0(2) ).*T ).* exp(-1/2 *(T/sigma_w^2).^2); %kz,kx,t
 kx = [];
